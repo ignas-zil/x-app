@@ -52,6 +52,11 @@ class NewCandidate extends Command
     {
         $name = $input->getArgument('name');
         $experience = $input->getArgument('experience');
+
+        if ($experience != 0 && $experience != 1) {
+            $output->writeln('Experience must be 0 or 1!');
+            return Command::FAILURE;
+        }
         $output->writeln('New Candidate:');
         $output->writeln('Name: '.$name.' Experience: '.$experience);
 

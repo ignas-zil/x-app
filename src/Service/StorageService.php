@@ -77,6 +77,9 @@ class StorageService
      */
     private function uniqueNameFile(string $name)
     {
+        if (!file_exists($this->filename)) {
+            return true;
+        }
         $saved_names = explode("\n", file_get_contents($this->filename));
         if (in_array($name, $saved_names)) {
             return false;
